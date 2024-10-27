@@ -1,9 +1,14 @@
 <script setup>
 
+import Navigation from "../components/Navigation.vue";
 </script>
 
 <template>
-  $END$
+  <h1 class="text-3xl text-white font-bold">
+    WalletView
+  </h1>
+
+  <Navigation page="/wallet" />
 </template>
 
 <style scoped>

@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      main: ['Monomaniac One']
+    },
     extend: {},
   },
   plugins: [],

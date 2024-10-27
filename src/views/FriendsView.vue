@@ -1,9 +1,14 @@
 <script setup>
 
+import Navigation from "../components/Navigation.vue";
 </script>
 
 <template>
-  $END$
+  <h1 class="text-3xl text-white font-bold">
+    Friends
+  </h1>
+
+  <Navigation page="/friends" />
 </template>
 
 <style scoped>
