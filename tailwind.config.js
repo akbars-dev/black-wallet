@@ -6,9 +6,18 @@ export default {
   ],
   theme: {
     fontFamily: {
-      main: ['Monomaniac One']
+      main: ['Monomaniac One'],
+      ibm: ['IBM Plex Mono'],
+      nico: ['Nico Moji']
     },
-    extend: {},
+    extend: {
+      colors: {
+        mainGray: "rgba(255, 255, 255, 0.30)",
+        bgGray: "#1A1A1B",
+        btnGray: "#282828",
+        mainYellow: "rgba(255, 215, 0, 0.87)",
+      }
+    },
   },
   plugins: [],
 }

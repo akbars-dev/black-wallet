@@ -1,6 +1,5 @@
 <script setup>
 import { RouterView } from "vue-router";
-import Navigation from "./components/Navigation.vue";
 </script>
 
 <template>
@@ -16,7 +15,7 @@ import Navigation from "./components/Navigation.vue";
   position: relative;
   max-width: 100%;
   width: 422px;
-  background-image: url('./assets/backround.jpg');
+  background-image: url('assets/images/backround.jpg');
   height: 100vh !important;
   background-repeat: no-repeat;
   background-position: center;
