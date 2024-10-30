@@ -9,4 +9,4 @@ userRouter.get('/referalls/:referallId', getReferalls);
 userRouter.post('/register', registerUser);
 
 
-module.exports = userRouter;
+module.exports = userRouter;    
