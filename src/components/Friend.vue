@@ -1,5 +1,12 @@
 <script setup>
+import {defineProps} from 'vue'
 
+defineProps({
+  friendName: String,
+  money: String,
+  date: String,
+  clock: String
+})
 </script>
 
 <template>
@@ -8,14 +15,14 @@
     <img class="w-[36px]" src="../assets/images/profile.svg" alt="profile">
 
     <div class="profile__text flex flex-col">
-      <span class="text-[17px] text-white font-main">Bunyodbek Mirxalilov</span>
-      <span class="text-[12px] text-mainGray font-ibm">12 000 000 BW</span>
+      <span class="text-[17px] text-white font-main">{{friendName}}</span>
+      <span class="text-[12px] text-mainGray font-ibm">{{money}} BW</span>
     </div>
   </div>
 
   <div class="date flex flex-col">
-    <span class="font-ibm text-mainGray text-[10px]">24.10.2024</span>
-    <span class="font-ibm text-mainGray text-[10px]">12:30</span>
+    <span class="font-ibm text-mainGray text-[10px]">{{date}}</span>
+    <span class="font-ibm text-mainGray text-[10px]">{{clock}}</span>
   </div>
 </div>
 </template>

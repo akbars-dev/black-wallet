@@ -1,12 +1,15 @@
 <script setup>
+import {useRouter} from "vue-router";
 
 import Navigation from "../components/Navigation.vue";
 import Task from "../components/Task.vue";
 import UIButton from "../components/ui/UIButton.vue";
 
 
+const router = useRouter();
+
 const handleButtonClick = () => {
-  console.log('clicked');
+  return router.push('/earn');
 }
 </script>
 

@@ -12,23 +12,9 @@ import Friend from "../components/Friend.vue";
 
 
   <div class="friends mt-[15px] flex flex-col gap-[8px] max-h-[60%]">
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
+    <Friend friend-name="Bunyodbek Mirxalilov" money="12 000 000" date="24.10.2024" clock="12:30" />
+
+
   </div>
 
   <Navigation page="/friends" />

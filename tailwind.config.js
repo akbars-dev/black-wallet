@@ -16,6 +16,7 @@ export default {
         bgGray: "#1A1A1B",
         btnGray: "#282828",
         mainYellow: "rgba(255, 215, 0, 0.87)",
+        graySeventy: "rgba(255, 255, 255, 0.70)"
       }
     },
   },
