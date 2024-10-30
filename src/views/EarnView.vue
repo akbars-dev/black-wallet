@@ -7,26 +7,26 @@ import Task from "../components/Task.vue";
 </script>
 
 <template>
-  <UIStatus :balance="20000"/>
-  <UIPageIndicator page="Tasks" />
+    <UIStatus :balance="20000"/>
+    <UIPageIndicator page="Tasks" />
 
-  <div class="tasks mt-[15px] flex flex-col gap-[8px] h-[80%]">
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-    <Task task-title="Tribes" task-description="Compete for rewards" />
-  </div>
+    <div class="tasks mt-[15px] flex flex-col gap-[8px] max-h-[60%]">
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+      <Task task-title="Tribes" task-description="Compete for rewards" />
+    </div>
 
 
   <Navigation page="/earn" />
@@ -39,15 +39,15 @@ import Task from "../components/Task.vue";
 
 /* WebKit Scrollbar */
 .tasks::-webkit-scrollbar {
-  width: 0;
+  width: 1px;
 }
 
 .tasks::-webkit-scrollbar-track {
-  background: #e0e0e0;
+  background: transparent;
 }
 
 .tasks::-webkit-scrollbar-thumb {
-  background-color: yellow;
+  background-color: transparent;
   border-radius: 6px;
 }
 
