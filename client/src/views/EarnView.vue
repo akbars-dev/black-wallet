@@ -1,9 +1,27 @@
 <script setup>
+import {ref, onMounted} from "vue";
+
+import {getTasks} from "../services/api.js";
 
 import Navigation from "../components/Navigation.vue";
 import UIStatus from "../components/ui/UIStatus.vue";
 import UIPageIndicator from "../components/ui/UIPageIndicator.vue";
 import Task from "../components/Task.vue";
+
+const data = ref(null);
+
+const fetchData = async () => {
+  try {
+    const response = await getTasks();
+    data.value = response.data;
+  }catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+onMounted(fetchData);
 </script>
 
 <template>
@@ -11,21 +29,8 @@ import Task from "../components/Task.vue";
     <UIPageIndicator page="Tasks" />
 
     <div class="tasks mt-[15px] flex flex-col gap-[8px] max-h-[60%]">
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
-      <Task task-title="Tribes" task-description="Compete for rewards" />
+
+      <Task v-for="task in data" :task-title="task.name" :task-description="task.description" :task-link="task.link" />
     </div>
 
 

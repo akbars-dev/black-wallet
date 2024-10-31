@@ -1,10 +1,17 @@
 <script setup>
 import { defineProps } from 'vue';
+import {useRouter} from "vue-router";
 
+const router = useRouter();
+
+const taskAction = (link) => {
+  router.push(link)
+}
 
 defineProps({
   taskTitle: String,
   taskDescription: String,
+  taskLink: String,
 })
 </script>
 
@@ -17,9 +24,9 @@ defineProps({
       <span class="font-ibm text-mainGray text-[12px]">{{ taskDescription }}</span>
     </div>
   </div>
-  <button class="task__button text-white font-main px-[24px] w-[68px] flex items-center justify-center rounded-[24px] text-[16px] pb-[5px] bg-btnGray">
+  <a  target="_blank" class="task__button text-white font-main px-[24px] w-[68px] flex items-center justify-center rounded-[24px] text-[16px] pb-[5px] bg-btnGray">
     Open
-  </button>
+  </a>
 </div>
 </template>
 

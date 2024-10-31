@@ -11,12 +11,13 @@ const router = useRouter();
 const handleButtonClick = () => {
   return router.push('/earn');
 }
+
 </script>
 
 <template>
 
   <div class="home-section pt-[32px]">
-    <Task task-title="Tribes" task-description="Compete for rewards" />
+    <Task :action="handleButtonClick" task-title="Tasks" task-description="Compete tasks for rewards" />
 
     <div class="profile  m-auto mt-[30px] flex flex-col items-center w-[270px]">
       <img class="w-[113px] mb-[6px]" src="../assets/images/profile.svg" alt="profile" />
