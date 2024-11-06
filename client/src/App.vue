@@ -1,13 +1,29 @@
 <script setup>
-import { RouterView } from "vue-router";
+import {RouterView} from "vue-router";
+import {useAppStore} from "./store/app.js";
+import {onMounted, ref} from "vue";
+import UILoading from "./components/ui/UILoading.vue";
+
+
+const app = useAppStore();
+const loading = ref(false);
+
+onMounted(async () => {
+  await app.init().then(() => {
+    loading.value = true;
+  })
+})
 </script>
 
 <template>
-  <div class="wrapper m-auto">
+  <UILoading v-if="!loading" />
+
+
+  <div v-if="loading" class="wrapper m-auto">
     <RouterView/>
   </div>
-</template>
 
+</template>
 
 
 <style scoped>

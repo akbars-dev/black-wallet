@@ -28,7 +28,7 @@ async function checkUser(req, res, next) {
         const { telegramId } = req.params;
 
         const user = await userModel.findOne({ telegramId: telegramId });
-        if (!user) return res.json({ msg: "User topilmadi", data: [] })
+        if (!user) return res.json({ msg: "User topilmadi", data: false })
         return res.json({ msg: "User topildi", data: user })
     } catch (error) {
         next(error)

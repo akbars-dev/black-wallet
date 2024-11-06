@@ -12,6 +12,7 @@
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "node-telegram-bot-api": "^0.66.0",
+    "pinia": "^2.2.5",
     "socket.io-client": "^4.8.1",
     "vue": "^3.4.37",
     "vue-router": "^4.4.5"

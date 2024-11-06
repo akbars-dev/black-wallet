@@ -1,5 +1,6 @@
 const ApiError = require("../errors/api-error");
 const taskModel = require("../models/task-model");
+const userModel = require("../models/user-model");
 
 async function createTask(req, res, next) {
     try {
@@ -15,12 +16,36 @@ async function createTask(req, res, next) {
 
 async function getTasks(req, res, next) {
     try {
-        const tasks = await taskModel.find();
-        return res.json({ msg: "Barcha tasklar", data: tasks })
+        const user = await userModel.findOne({ telegramId: req.params.id }).populate('tasks.taskId');
+        if (!user) throw ApiError.BadRequest('User not found');
+
+        const allTasks = await taskModel.find({});
+
+        const userTasksMap = new Map(user.tasks.map(task => [task.taskId._id.toString(), task]));
+
+        const passedTasks = [];
+        const notPassedTasks = [];
+
+        console.log(userTasksMap);
+        
+
+        allTasks.forEach(task => {
+            const userTask = userTasksMap.get(task._id.toString());
+
+            if (userTask && userTask.status === 'passed') {
+                passedTasks.push(task);
+            } else {
+                notPassedTasks.push(task);
+            }
+        });
+
+        return res.json({ msg: "All tasks", data: { passedTasks, notPassedTasks } });
     } catch (error) {
-        next(error)
+        console.error('Error retrieving tasks:', error);
+        next(error);
     }
 }
+
 
 
 async function getTask(req, res, next) {
@@ -58,11 +83,27 @@ async function deleteTask(req, res, next) {
     }
 }
 
+async function passTask(req, res, next) {
+    try {
+        const user = await userModel.findOne({ telegramId: req.body.telegramId })
+        const task = await taskModel.findById(req.params.id)
+
+        if (!user || !task) throw ApiError.BadRequest("Topilmadi")
+        user.tasks.push({ taskId: task._id, status: 'passed', completedAt: new Date() });
+        user.balance += +task.cost
+        await user.save()
+
+        return res.json({ msg: "Task bajarildi", data: true })
+    } catch (error) {
+        next(error)
+    }
+}
 
 module.exports = {
     createTask,
     getTasks,
     getTask,
     updateTask,
-    deleteTask
+    deleteTask,
+    passTask
 }

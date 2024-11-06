@@ -1,36 +1,42 @@
 <script setup>
 import {ref, onMounted} from "vue";
 
-import {getTasks} from "../services/api.js";
-
 import Navigation from "../components/Navigation.vue";
 import UIStatus from "../components/ui/UIStatus.vue";
 import UIPageIndicator from "../components/ui/UIPageIndicator.vue";
 import Task from "../components/Task.vue";
+import {useAppStore} from "../store/app.js";
+import useTelegram from "../services/telegram.js";
+import {useRouter} from "vue-router";
 
-const data = ref(null);
+const app = useAppStore()
+const router = useRouter()
+const {tg} = useTelegram()
 
-const fetchData = async () => {
-  try {
-    const response = await getTasks();
-    data.value = response.data;
-  }catch (error) {
-    console.log(error);
+
+onMounted(async () => {
+  await app.fetchTasks();
+});
+
+async function openTask(task) {
+  await app.passTask(task._id);
+
+  if (task.link.includes('t.me')) {
+    tg.openTelegramLink(task.link);
+  } else {
+    tg.openLink(task.link);
   }
+  router.push("/passed")
 }
-
-
-
-onMounted(fetchData);
 </script>
 
 <template>
-    <UIStatus :balance="20000"/>
+    <UIStatus :balance="true"/>
     <UIPageIndicator page="Tasks" />
 
     <div class="tasks mt-[15px] flex flex-col gap-[8px] max-h-[60%]">
-
-      <Task v-for="task in data" :task-title="task.name" :task-description="task.description" :task-link="task.link" />
+      <Task :action="() => openTask(task)" v-for="task in app.tasks?.notPassedTasks" :status="false" :task-title="task.name" :task-description="task.description" :task-link="task.link" />
+      <Task v-for="task in app.tasks?.passedTasks" :status="true" :task-title="task.name" :task-description="task.description" :task-link="task.link" />
     </div>
 
 

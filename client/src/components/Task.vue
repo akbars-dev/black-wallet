@@ -12,6 +12,8 @@ defineProps({
   taskTitle: String,
   taskDescription: String,
   taskLink: String,
+  status: String,
+  action: Function
 })
 </script>
 
@@ -24,8 +26,12 @@ defineProps({
       <span class="font-ibm text-mainGray text-[12px]">{{ taskDescription }}</span>
     </div>
   </div>
-  <a  target="_blank" class="task__button text-white font-main px-[24px] w-[68px] flex items-center justify-center rounded-[24px] text-[16px] pb-[5px] bg-btnGray">
+  <a v-if="!status" @click.prevent="action"  target="_blank" class="cursor-pointer task__button text-white font-main px-[24px] w-[68px] flex items-center justify-center rounded-[24px] text-[16px] pb-[5px] bg-btnGray">
     Open
+  </a>
+
+  <a v-if="status"  @click.prevent="action"   class="task__button text-white font-main px-[24px] w-[68px] flex items-center justify-center rounded-[24px] text-[16px] pb-[5px] bg-btnGray">
+    Passed
   </a>
 </div>
 </template>
